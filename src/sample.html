@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User_DashBoard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <style>
+        /* Main styling */
+        main {
+            margin-top: 0px;
+            min-height: 100vh;
+            padding: 30px; /* Add padding to main for overall spacing */
+        }
+
+        /* Table styling */
+        .table {
+            background-color: #1a1a1a; /* Background color for the table */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px auto; /* Center the table */
+            max-width: 85%; /* Set a maximum width for the table */
+        }
+
+        thead {
+            background-color: #0088ff; /* Custom header color */
+            color: #ffffff; /* Text color for header */
+        }
+
+        .table th, .table td {
+            text-align: center;
+            color: #ffffff; /* Text color for table body */
+        }
+
+        /* Adjust column width for S.No and Date */
+        .col-sno  {
+            width: 5%;
+        }
+
+        .col-date,.col-Edit {
+            width: 10%;
+        }
+        .col-date,.col-status {
+            width: 7%;
+        }
+
+        /* Chat Icon Start*/
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+     /* Chat Icon End*/
+
+
+       /* Chat Modal Start*/
+        #chatModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .chat-modal-content {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            height: 80%;
+            max-height: 600px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #chatModal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .chat-modal-content.show {
+            transform: scale(1);
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 2px solid #34495e;
+            background-color: #16a085;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .chat-header h2 {
+            font-size: 24px;
+            font-weight: bolder;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .group-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .close {
+            font-size: 30px;
+            cursor: pointer;
+            color: #ecf0f1;
+        }
+
+        .chat-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #34495e;
+            border-radius: 0 0 10px 10px;
+            margin-top: 10px;
+        }
+
+        /* Chat Modal End*/
+
+
+
+    
+
+        /* New Group Modal */
+        #newGroupModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #modal-content1 {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            max-width: 500px;
+            height: 55%;
+            max-height: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #modal-header1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        #modal-body1 {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        #modal-footer1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .send-button {
+            font-size: 24px;
+            color: rgb(36, 99, 208);
+            cursor: pointer;
+        }
+
+        #chatGroups div {
+            margin-bottom: 10px;
+        }
+
+
+        
+    </style>
+</head>
+
+<body style="background-color: #000000;">
+    <header>
+        <nav class="navbar navbar-expand-lg" style="background-color: #ffffff;">
+            <a class="navbar-brand" href="#">Work Status Sheet</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" style="background-color: #ff4000; color: rgb(26, 124, 181); cursor: pointer;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" data-toggle="modal" data-target="#exampleModalCenter">Work Status Update</a>
+                    </li>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-primary text-white">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Work Status</h5>
+                                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="form">
+                                    <h5 id="message"></h5>
+                                    <div class="form-group">
+                                        <label for="dateSelect">Select Date:</label>
+                                        <input type="date" id="dateSelect" class="form-control custom-date-input" style="width: 150px;" onchange="updateModalTitle()">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="workUpdate">Work Update:</label>
+                                        <textarea id="workUpdate" class="form-control" rows="3" placeholder="Enter work update..." style="border: 1px solid #007bff;"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="workUpdateLink">Work Update Link:</label>
+                                        <input type="url" id="workUpdateLink" class="form-control" placeholder="Enter work update link..." style="border: 1px solid #007bff;">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" id="modalActionButton" class="btn btn-primary" onclick="WorkUpdated()">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+
+                <form class="form-inline mt-3 ml-auto">
+                    <!-- <button onclick="redirectToUserDetails()" id="UserNAme"></button> -->
+                    <a class="navbar-brand" id="UserNAme" href="javascript:void(0);" onclick="redirectToUserDetails()"></a>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='/index.html'">Logout</button>
+                </form>     
+
+            </div>
+        </nav>
+        
+    </header>
+    
+    <!--Table-->
+    <main>
+        <div class="table-responsive" id="dataTable"> <!-- Responsive wrapper for the table -->
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col" class="col-sno">S.No</th>
+                        <th scope="col" class="col-date">Date</th>
+                        <th scope="col">Work Update</th>
+                        <th scope="col">Link</th>
+                        <th scope="col" class="col-Edit">Edit</th>
+                        <th scope="col" class="col-status">Status</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+
+     <!--Chat Model-->
+     <button id="chatButton" class="chat-icon">💬</button>
+
+     <!-- Chat Modal -->
+     <div id="chatModal" class="modal">
+         <div class="chat-modal-content">
+             <div class="chat-header">
+                 <h2>Circles</h2>
+                 <div>
+                     <!-- Close Modal Icon (FontAwesome) -->
+                     <span id="closeModal" class="close"><i class="fas fa-times-circle"></i></span>
+
+                 </div>
+             </div>
+             <div class="chat-body" id="chatGroups">
+                 
+             </div>
+         </div>
+     </div>
+
+
+     <!-- New Group Modal -->
+     <div id="newGroupModal" class="modal">
+        <div class="modal-content" id="modal-content1">
+            <div class="modal-header" id="modal-header1">
+                <h2 id="GroupName"></h2>
+                <span id="closeGroupModal" class="close">&times;</span>
+            </div>
+
+            <div class="modal-body" id="modal-body1">
+                <ul id="chatMessages" class="chat-messages">
+                    <!-- Chat messages will appear here -->
+                </ul>
+            </div>
+
+            <div class="modal-footer" id="modal-footer1">
+                <textarea id="chatInput" placeholder="Type your message"></textarea>
+                <a id="sendMessage" href="#" class="send-button">
+                    <i class="fas fa-paper-plane"></i>
+                </a>                
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="text-center text-white" style="background-color: #1a1a1a; padding: 20px;">
+        <div class="container">
+            <p>&copy; 2024 PD. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+    <script>
+
+    const params = new URLSearchParams(window.location.search); 
+    const Email = params.get('value'); 
+    document.getElementById("UserNAme").innerHTML=Email;
+    console.log(Email);
+        // Function to set max date to today
+        document.addEventListener("DOMContentLoaded", function() {
+            const today = new Date().toISOString().split("T")[0];
+            document.getElementById("dateSelect").setAttribute("max", today);
+        });
+    
+        // Function to update the modal title with the selected date
+        function updateModalTitle() {
+            const dateInput = document.getElementById("dateSelect");
+            const selectedDate = dateInput.value ? new Date(dateInput.value).toLocaleDateString() : "Select a date";
+            document.getElementById("exampleModalCenterTitle").textContent = `Work Status - ${selectedDate}`;
+        }
+    </script>
+
+    <script src="./ds.js"></script>
+    <script src="./signalr.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

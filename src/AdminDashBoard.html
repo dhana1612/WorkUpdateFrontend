@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdminDashBoard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+    <style>
+        /* Main styling */
+        main {
+            margin-top: 0px;
+            min-height: 100vh;
+            padding: 30px; /* Add padding to main for overall spacing */
+        }
+
+        /* Table styling */
+        .table {
+            background-color: #1a1a1a; /* Background color for the table */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px auto; /* Center the table */
+            max-width: 85%; /* Set a maximum width for the table */
+        }
+
+        thead {
+            background-color: #0088ff; /* Custom header color */
+            color: #ffffff; /* Text color for header */
+        }
+
+        .table th, .table td {
+            text-align: center;
+            color: #ffffff; /* Text color for table body */
+        }
+
+        /* Adjust column width for S.No and Date */
+        .col-sno  {
+            width: 5%;
+        }
+
+        .col-date,.col-Edit {
+            width: 10%;
+        }
+        .col-date,.col-status {
+            width: 7%;
+        }
+        #dataTable1 {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .table-header {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 8px 16px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .username {
+            font-size: 1.1em;
+        }
+
+        .close-button {
+            background: none;
+            color: #ffffff;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        .close-button:hover {
+            color: #ff0000;
+        }
+
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+     /* Chat Icon Start*/
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+        }
+     /* Chat Icon End*/
+
+
+       /* Chat Modal Start*/
+        #chatModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease;
+        }
+
+        .chat-modal-content {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            height: 80%;
+            max-height: 600px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #chatModal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .chat-modal-content.show {
+            transform: scale(1);
+        }
+
+        .chat-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 2px solid #34495e;
+            background-color: #16a085;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .chat-header h2 {
+            font-size: 24px;
+            font-weight: bolder;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .group-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .close {
+            font-size: 30px;
+            cursor: pointer;
+            color: #ecf0f1;
+        }
+
+        .chat-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #34495e;
+            border-radius: 0 0 10px 10px;
+            margin-top: 10px;
+        }
+
+        /* Chat Modal End*/
+
+
+
+        
+
+        .group-icon {
+            cursor: pointer;
+        }
+
+        .close {
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #333;
+        }
+
+        #selectedNames {
+            font-weight: bolder;
+        }
+
+        /* Group Modal */
+        #groupFrame {
+            display: none;
+            position: fixed;
+            top: 5px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #34495e;
+            color: #faf7f7;
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 460px;
+            max-height: 1850px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+
+
+
+
+        /* New Group Modal */
+        #newGroupModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #modal-content1 {
+            background-color: #fff;
+            color: #000;
+            padding: 20px;
+            border-radius: 10px;
+            width: 60%;
+            max-width: 500px;
+            height: 55%;
+            max-height: 800px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #modal-header1 {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        #modal-body1 {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+
+        #modal-footer1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid #ccc;
+            padding-top: 10px;
+        }
+
+        .send-button {
+            font-size: 24px;
+            color: rgb(36, 99, 208);
+            cursor: pointer;
+        }
+
+        #chatGroups div {
+            margin-bottom: 10px;
+        }
+
+
+   /* Important Important chat space between name and checkbox*/
+        #employeeList label {
+            margin-left: 8px;
+        }
+
+        
+    </style>
+    
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">AdminDashBoard</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#" id="toggleTableButton">WorkStatus</a>
+                  </li>
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Employees
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id="EmployeeName">
+                      
+                    </ul>
+                  </li>
+                </ul>
+                <form class="form-inline mt-3 ml-auto">
+
+                    <a href="./NewUser.html" class="mx-4 my-sm-0">
+                        <i class="fas fa-user-plus" style="font-size: 24px; color: rgb(41, 127, 232);"></i>
+                    </a>
+                    <!-- <button class="btn btn-outline-primary mx-4 my-sm-0" type="button" onclick="location.href='NewUser.html'">AddNewUSer</button> -->
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="location.href='/index.html'">Logout</button>
+                </form>
+              </div>
+            </div>
+        </nav>
+        
+    </header>
+    
+    <!--Table-->
+    <main>
+        <div class="table-responsive" id="dataTable" style="display: none;"> <!-- Responsive wrapper for the table -->
+            <!-- Header with Username and Close Button -->
+            <div class="table-header d-flex justify-content-between align-items-center">
+                <h5>Work Status</h5> 
+                <button type="button" class="close-button" onclick="document.getElementById('dataTable').style.display='none'">
+                    &times;
+                </button>
+            </div>
+            
+            <table class="table table-striped table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col" class="col-sno">S.No</th>
+                        <th scope="col" class="col-date">Name</th>
+                        <th scope="col" class="col-date">Date</th>
+                        <th scope="col">Work Update</th>
+                        <th scope="col">Link</th>
+                        <th scope="col" class="col-status">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-responsive" id="dataTable1" style="display:none;">
+    <!-- Header with Username and Close Button -->
+    <div class="table-header d-flex justify-content-between align-items-center">
+        <h5><span id="user1"></span> Work Status</h5> 
+        <button type="button" class="close-button" onclick="document.getElementById('dataTable1').style.display='none'">
+            &times;
+        </button>
+    </div>
+
+    <!-- Table content -->
+    <table class="table table-striped table-dark mb-0">
+        <thead>
+            <tr>
+                <th scope="col" class="col-sno">S.No</th>
+                <th scope="col" class="col-date">Date</th>
+                <th scope="col">Work Update</th>
+                <th scope="col">Link</th>
+                <th scope="col" class="col-status">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dynamic rows go here -->
+        </tbody>
+    </table>
+        </div>
+
+        
+    </main>
+
+
+
+
+    <!--Chat Model-->
+            <button id="chatButton" class="chat-icon">💬</button>
+
+            <!-- Chat Modal -->
+            <div id="chatModal" class="modal">
+                <div class="chat-modal-content">
+                    <div class="chat-header">
+                        <h2>Circles</h2>
+                        <div>
+                        <!-- Group Icon (FontAwesome) -->
+                            <span id="groupIcon" class="group-icon"><i class="fas fa-users"></i></span>
+
+                            <!-- Close Modal Icon (FontAwesome) -->
+                            <span id="closeModal" class="close"><i class="fas fa-times-circle"></i></span>
+
+                        </div>
+                    </div>
+                    <div class="chat-body" id="chatGroups">
+                        
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Group Modal -->
+            <div id="groupFrame" class="modal">
+                <div class="modal-content">
+
+                    <div style="display: flex; justify-content: space-between; align-items: center;" class="chat-header">
+                        <h2>Create New Group</h2>
+                        <span id="closeGroupFrame" class="close">&times;</span>
+                    </div>
+
+                    <div>
+                        <label for="groupName" style="margin-top: 18px;">Group Name</label>
+                        <input type="text" id="groupName" placeholder="Enter group name" 
+                            style="width: 100%; padding: 10px; margin-bottom: 20px;  border: 1px solid #ddd; border-radius: 4px;">
+                        
+                        <label for="groupDescription">Description</label>
+                        <textarea id="groupDescription" placeholder="Enter description" 
+                                style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px; height: 80px;"></textarea>
+                        
+                        <label for="employeeList">Select Members</label>
+                        <div id="employeeList" style="margin-bottom: 20px;">
+                            
+                        </div>
+                    </div>
+
+                    <div id="selectedNames">Selected: None</div>
+
+
+                    <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                            <button id="cancelGroup" style="padding: 10px; background: #ccc; border: none; cursor: pointer;">Cancel</button>
+                            <button id="createGroup" style="padding: 10px; background: #007bff; color: white; border: none; cursor: pointer;" onclick="createGroup()">Create Group</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Group Modal -->
+            <div id="newGroupModal" class="modal">
+                <div class="modal-content" id="modal-content1">
+                    <div class="modal-header" id="modal-header1">
+                        <h2 id="GroupName"></h2>
+                        <span id="closeGroupModal" class="close">&times;</span>
+                    </div>
+
+                    <div class="modal-body" id="modal-body1">
+                        <ul id="chatMessages" class="chat-messages">
+                            <!-- Chat messages will appear here -->
+                        </ul>
+                    </div>
+
+                    <div class="modal-footer" id="modal-footer1">
+                        <textarea id="chatInput" placeholder="Type your message"></textarea>
+                        <a id="sendMessage" href="#" class="send-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </a>                
+                    </div>
+                </div>
+            </div>
+    <!--Chat Model-->
+
+
+</body>
+    <script src ="./pd.js"></script>
+    <script src="./signalr.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</html>
