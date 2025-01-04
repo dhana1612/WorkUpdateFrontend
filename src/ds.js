@@ -342,62 +342,68 @@ closeModal.addEventListener('click', () => {
 });
 
 
+let sendMessageHandler;
+let isSendMessageAttached = false; // Flag to prevent multiple event listener attachments
 
-// Close the new group chat modal
-closeGroupModal.addEventListener('click', () => {
-    newGroupModal.style.display = 'none';
-    chatModal.style.display = 'flex'; // Open the "My Chat" modal again
-    chatMessages.innerHTML="";
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Setup SignalR connection
+    chatConnection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7035/hubs/Chat").withAutomaticReconnect().build();
+
+    // Handle reconnection logic
+    chatConnection.onreconnecting(() => {
+        console.warn("Reconnecting to the chat hub...");
+    });
+
+    chatConnection.onreconnected(() => {
+        console.log("Reconnected to the chat hub.");
+        if (GroupStatus) {
+            chatConnection.invoke("JoinGroup", GroupStatus).catch(err => console.error("Error rejoining group:", err));
+        }
+    });
+
+    chatConnection.onclose(async () => {
+        console.error("Chat connection lost. Attempting to reconnect...");
+        await chatConnection.start().catch(err => console.error("Reconnection failed:", err));
+    });
+
+    // Start the connection
+    chatConnection.start().then(() => console.log("Chat Connection Started Successfully")).catch(err => console.error("Chat Connection Failed", err));
 });
 
 
+    // Open the new group chat modal
+    function openGroupModal(groupName) {
+        chatModal.style.display = 'none';
+        newGroupModal.style.display = 'flex';
 
+        // Set the group name in the new modal
+        groupNameHeading.textContent = groupName;
+        chatMessages.innerHTML = "";
 
-//Chat Message
-var ResDate;//
-var time;//
-var resmessage;//
-var RetriveUserNameForChatMessages;//
-const sendMessage = document.getElementById('sendMessage');//
-const chatInput = document.getElementById('chatInput');//
-const chatMessages = document.getElementById('chatMessages');//
+        RetriveChatMessage(groupName);
 
+        // Join the group
+        if (chatConnection.state === "Disconnected") {
+            chatConnection.start()
+                .then(() => {
+                    chatConnection.invoke("JoinGroup", groupName).catch(err => console.error("Error joining group:", err));
+                    GroupStatus = groupName;
+                })
+                .catch(err => console.error("Chat Connection Failed", err));
+        } else {
+            chatConnection.invoke("JoinGroup", groupName).catch(err => console.error("Error joining group:", err));
+            GroupStatus = groupName;
+        }
 
-document.addEventListener('DOMContentLoaded', () => { // Setup SignalR connection 
-const chatConnection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7035/hubs/Chat").build();
+        // Remove previous SignalR listener before adding a new one
+        chatConnection.off("addNewMessageToPage");
 
-    chatConnection.start().then(() => {
-        console.log("Chat Connection Started Successfully");
-
-        // Send Message
-        sendMessage.addEventListener('click', () => {
-            time = displayCurrentTime();
-            let currentDate = new Date();
-            
-            var GroupName =  document.getElementById("GroupName").innerText;
-            console.log(GroupName)
-    
-             ResDate = currentDate.toLocaleDateString();
-             resmessage = chatInput.value.trim();
-    
-    
-            if (resmessage) {
-                chatConnection.invoke("Send", RetriveUserNameForChatMessages, resmessage, time).catch(err => console.error(err));
-                chatMessageSave(GroupName);
-                chatInput.value = '';
-            }
-        });
-    }).catch(err => console.error("Chat Connection Failed", err));
-    
-    
-    
-    // Listen for new messages from the server
-    chatConnection.on("addNewMessageToPage", (name, message, time) => {
-            // Create a new list item for the message
+        // Add SignalR listener for new messages
+        chatConnection.on("addNewMessageToPage", (name, message, time, groupName) => {
             const newMessage = document.createElement('li');
             newMessage.classList.add('chat-message');
-    
-            
+
             newMessage.innerHTML = `
                 <div class="chat-bubble">
                     <span class="chat-name">${name}</span>
@@ -405,20 +411,128 @@ const chatConnection = new signalR.HubConnectionBuilder().withUrl("https://local
                     <p class="chat-text">${message}</p>
                 </div>
             `;
-    
-            // Append the new message to the chat container
+
             chatMessages.appendChild(newMessage);
-    
             chatInput.value = '';
+        });
+
+        // Ensure the handler is only attached once
+        if (!isSendMessageAttached) {
+            sendMessageHandler = function() {
+                time = displayCurrentTime();
+                const currentDate = new Date();
+                ResDate = currentDate.toLocaleDateString();
+                resmessage = chatInput.value.trim();
+
+                if (resmessage) {
+                    chatConnection.invoke("Send", groupName, RetriveUserNameForChatMessages, resmessage, time)
+                        .catch(err => console.error(err));
+                    chatMessageSave(groupName);
+                    chatInput.value = '';
+                }
+            };
+
+            sendMessage.addEventListener('click', sendMessageHandler);
+            isSendMessageAttached = true; // Mark the listener as attached
+        }
+    }
+
+    // Close the new group chat modal
+    closeGroupModal.addEventListener('click', () => {
+        if (GroupStatus) {
+            chatConnection.invoke("LeaveGroup", GroupStatus).catch(err => console.error("Error leaving group:", err));
+            GroupStatus = null;
+        }
+
+        // Clean up SignalR listener for the current group
+        chatConnection.off("addNewMessageToPage");
+
+        // Remove event listener to prevent duplicate listeners
+        if (sendMessageHandler) {
+            sendMessage.removeEventListener('click', sendMessageHandler);
+            isSendMessageAttached = false; // Reset the flag
+        }
+
+        newGroupModal.style.display = 'none';
+        chatModal.style.display = 'flex'; // Open the "My Chat" modal again
+        chatMessages.innerHTML = "";
     });
 
 
 
-});
+
+//Chat Message
+var chatConnection;
+var GroupStatus;
+var ResDate;
+var time;
+var resmessage;
+var groupName;
+var groupDescription;
+var RetriveUserNameForChatMessages;
+const sendMessage = document.getElementById('sendMessage');
+const chatInput = document.getElementById('chatInput');
+const chatMessages = document.getElementById('chatMessages');
+
+
+// document.addEventListener('DOMContentLoaded', () => { // Setup SignalR connection 
+// const chatConnection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7035/hubs/Chat").build();
+
+//     chatConnection.start().then(() => {
+//         console.log("Chat Connection Started Successfully");
+
+//         // Send Message
+//         sendMessage.addEventListener('click', () => {
+//             time = displayCurrentTime();
+//             let currentDate = new Date();
+            
+//             var GroupName =  document.getElementById("GroupName").innerText;
+//             console.log(GroupName)
+    
+//              ResDate = currentDate.toLocaleDateString();
+//              resmessage = chatInput.value.trim();
+    
+    
+//             if (resmessage) {
+//                 chatConnection.invoke("Send", RetriveUserNameForChatMessages, resmessage, time).catch(err => console.error(err));
+//                 chatMessageSave(GroupName);
+//                 chatInput.value = '';
+//             }
+//         });
+//     }).catch(err => console.error("Chat Connection Failed", err));
+    
+    
+    
+//     // Listen for new messages from the server
+//     chatConnection.on("addNewMessageToPage", (name, message, time) => {
+//             // Create a new list item for the message
+//             const newMessage = document.createElement('li');
+//             newMessage.classList.add('chat-message');
+    
+            
+//             newMessage.innerHTML = `
+//                 <div class="chat-bubble">
+//                     <span class="chat-name">${name}</span>
+//                     <span class="chat-time">[${time}]</span>    
+//                     <p class="chat-text">${message}</p>
+//                 </div>
+//             `;
+    
+//             // Append the new message to the chat container
+//             chatMessages.appendChild(newMessage);
+    
+//             chatInput.value = '';
+//     });
+
+
+
+// });
     
 
 
 
+
+//Retrive the Matches Group Name
 
 
 function checkDbForGroups() {
@@ -478,24 +592,6 @@ function displayGroupname(data) {
         console.error('Expected an array but received:', data);
     }
 }
-
-
- // Open the new group chat modal
- function openGroupModal(groupName) {
-    chatModal.style.display = 'none'; // Close the "My Chat" modal
-    newGroupModal.style.display = 'flex'; // Open the new group modal
-
-    // Set the group name in the new modal
-    groupNameHeading.textContent = groupName;
-    chatMessages.innerHTML="";
-    RetriveChatMessage(groupName)
-
-}
-
-
-
-
-
 
 
     
