@@ -10,7 +10,7 @@ function Login() {
     };
 
     console.log(data);
-    fetch("https://localhost:7035/api/UserLogins/Login", {
+    fetch("https://workupdate.onrender.com/api/UserLogins/Login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
