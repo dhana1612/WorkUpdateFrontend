@@ -20,7 +20,7 @@ function Register(event) {
 
     console.log(data)
 
-    fetch("https://localhost:7035/api/UserLogins", {
+    fetch("https://workupdate.onrender.com/api/UserLogins", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
