@@ -37,7 +37,6 @@ function Login() {
             window.location.href = `src/sample.html?value=${encodeURIComponent(email)}`;
         }
         else if(message===msg1){
-            alert(message);
             document.getElementById("message").textContent = message;
             document.getElementById("form").reset();  
             window.location.href = `src/AdminDashBoard.html?value=${encodeURIComponent(email)}`;

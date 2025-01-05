@@ -20,6 +20,7 @@
             color: #333;
         }
 
+
         .form-container {
             background: #ffffff;
             padding: 40px 30px;
@@ -61,17 +62,18 @@
             text-decoration: none;
             color: #555;
             transition: color 0.3s ease;
+            color: blue;
         }
 
         .ftag a:hover {
-            color: #008cba;
+            color: #ba0000;
         }
     </style>
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center">
         <div class="form-container">
-            <h2>Login Portal</h2>
+            <h2 class="text-primary">Login Portal</h2>
             <form action="/submit" method="post" id="form">
                 <div class="mb-3 text-start">
                     <label for="email" class="form-label">Email</label>
@@ -88,7 +90,7 @@
                     <a href="./src/ForgetPsd.html">Forgot Password?</a>
                 </div>
             </form>
-            <p id="message"></p>
+            <p id="message" class="text-danger"></p>
         </div>
     </div>
     <script src="./src/Login.js"></script>
