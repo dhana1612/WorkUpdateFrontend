@@ -15,17 +15,18 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #000000; /* Dark black background */
+            background-color: #c1e0f5; /* Dark black background */
             margin: 0;
+
         }
         .form-container {
-            background-color: #3b3737;
+            background-color: #e0c1d3;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 0 15px rgba(227, 221, 221, 0.5);
             width: 100%;
             max-width: 400px;
-            color: #fff;
+            color: #ffffff;
             transition: transform 0.3s ease;
         }
         .form-container:hover {
@@ -46,7 +47,7 @@
         .form-group label {
             display: block;
             font-weight: 600;
-            color: #e9e4e4;
+            color: rgb(250, 0, 137);
             font-size: 16px;
             margin-bottom: 7px;
         }
@@ -54,32 +55,32 @@
             width: 100%;
             padding: 10px;
             text-indent: 10px;
-            border: 2px solid #444;
+            border: 2px solid #ffffff;
             border-radius: 4px;
-            background-color: #0a0a0a;
+            background-color: #9e7c90;
             color: #fff;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(251, 251, 251, 0.535); /* 3D Effect */
             font-weight: 400;
         }
         .form-group input:hover  {
-            background-color: #0a0a0a;
-            box-shadow: 0 6px 12px rgb(161, 249, 177);
+            background-color: #c09fb1;
+            box-shadow: 0 6px 12px #c1e0f5;
         }
         .form-group input:focus{
             outline: none;
-            box-shadow: 0 6px 12px rgb(161, 249, 177);
+            box-shadow: 0 6px 12px #ffffff;
             transform: translateY(-2px);
         }
         .form-group input[type="button"] {
-            background-color: #37f680d6;
-            color: white;
+            background-color: #c1e0f5;
+            color: rgb(250, 0, 137);
             border: none;
             cursor: pointer;
             font-size: larger;
             font-weight: 600;
             transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgb(210, 222, 208);
+            box-shadow: 0 4px 10px rgb(255, 255, 255);
             margin-top: 20px;
             margin-bottom: 25px;
         }
@@ -92,7 +93,10 @@
             font-size: 19.5px;
             font-weight:  800;
             text-decoration: none;
-            color: rgb(245, 84, 84);
+            color: rgb(250, 0, 137);
+        }
+        h2{
+            color: rgb(250, 0, 137);
         }
     </style>
 </head>
@@ -100,7 +104,7 @@
 
     <div class="container">
         <div class="form-container">
-            <h2 class="text-warning">Create New User</h2>
+            <h2 >Create New User</h2>
             <form  method="post" id="form">
                 <div class="form-group">
                     <label for="username">Username</label>
