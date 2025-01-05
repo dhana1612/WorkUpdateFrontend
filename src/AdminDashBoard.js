@@ -30,7 +30,7 @@ function myFunction() {
     //Retrive all Data from Database 
     async function displayAllData() {
         try {
-            const response = await fetch(`https://localhost:7035/api/Admin`);
+            const response = await fetch(`https://workupdate.onrender.com/api/Admin`);
             
             if (!response.ok) {
                 const errorMessage = await response.text();
@@ -221,7 +221,7 @@ function myFunction() {
         const data = { Email: Email_through_populate_function };
         
         try {
-            const response = await fetch("https://localhost:7035/api/Admin/RetriveUserName", {
+            const response = await fetch("https://workupdate.onrender.com/api/Admin/RetriveUserName", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -256,7 +256,7 @@ function myFunction() {
         };
         console.log(data);
 
-        fetch("https://localhost:7035/api/Admin/updateResponseMessage", {
+        fetch("https://workupdate.onrender.com/api/Admin/updateResponseMessage", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -296,7 +296,7 @@ function myFunction() {
     // Retrieve the Data from Database through Email
     async function displayAllUserName() {
         try {
-            const response = await fetch(`https://localhost:7035/api/Admin/ListOfUserNames`);
+            const response = await fetch(`https://workupdate.onrender.com/api/Admin/ListOfUserNames`);
             
             if (!response.ok) {
                 const errorMessage = await response.text();
@@ -381,7 +381,7 @@ function myFunction() {
 
     //Retrive the Data from Database through Email
     function displayAllDatabasedEmail(email_throught_name) {
-        fetch(`https://localhost:7035/api/WorkUpdate/${encodeURIComponent(email_throught_name)}`)
+        fetch(`https://workupdate.onrender.com/api/WorkUpdate/${encodeURIComponent(email_throught_name)}`)
             .then(response => {
                 if (!response.ok) {
                     return response.text().then(errorMessage => {
@@ -719,7 +719,7 @@ function createGroup(selected,groupName,groupDescription)
    }
 
    console.log(data)
-     fetch("https://localhost:7035/api/Admin/Save_the_GroupDetails", {
+     fetch("https://workupdate.onrender.com/api/Admin/Save_the_GroupDetails", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -746,7 +746,7 @@ function createGroup(selected,groupName,groupDescription)
 async function RetriveExistingGroupName(){
 
     try {
-        const response = await fetch(`https://localhost:7035/api/Admin/GetExistingGroupName`);
+        const response = await fetch(`https://workupdate.onrender.com/api/Admin/GetExistingGroupName`);
         
         if (!response.ok) {
             const errorMessage = await response.text();
@@ -813,7 +813,7 @@ let isSendMessageAttached = false; // Flag to prevent multiple event listener at
     document.addEventListener('DOMContentLoaded', () => {
 
         // Setup SignalR connection
-        chatConnection = new signalR.HubConnectionBuilder().withUrl("https://localhost:7035/hubs/Chat").withAutomaticReconnect().build();
+        chatConnection = new signalR.HubConnectionBuilder().withUrl("https://workupdate.onrender.com/hubs/Chat").withAutomaticReconnect().build();
 
         // Handle reconnection logic
         chatConnection.onreconnecting(() => {
@@ -949,7 +949,7 @@ let isSendMessageAttached = false; // Flag to prevent multiple event listener at
         };
 
         // console.log(data); // Debugging purpose
-        fetch("https://localhost:7035/api/GroupChat/GroupChat", {
+        fetch("https://workupdate.onrender.com/api/GroupChat/GroupChat", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -976,7 +976,7 @@ let isSendMessageAttached = false; // Flag to prevent multiple event listener at
         const data = {
             GroupName:groupName
         };
-        fetch("https://localhost:7035/api/GroupChat/RetriveChatMessage", {
+        fetch("https://workupdate.onrender.com/api/GroupChat/RetriveChatMessage", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -1034,7 +1034,7 @@ let isSendMessageAttached = false; // Flag to prevent multiple event listener at
         const data = {
             Email: Email
         };
-        fetch("https://localhost:7035/api/GroupChat/RetriveUserName", {
+        fetch("https://workupdate.onrender.com/api/GroupChat/RetriveUserName", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
