@@ -240,7 +240,7 @@ function updateWorkDetails(id) {
    
 
     console.log(data);
-    fetch("https://localhost:7035/api/WorkUpdate/ExistingDetailsUpdate", {
+    fetch("https://workupdate.onrender.com/api/WorkUpdate/ExistingDetailsUpdate", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
