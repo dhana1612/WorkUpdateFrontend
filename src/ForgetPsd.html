@@ -10,26 +10,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Courier New', Courier, monospace;
+            font-family: 'Times New Roman', serif;
+            margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: #000000; /* Dark black background */
-            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f2f2f2, #e6e6e6);
+            background-size: cover;
+            background-attachment: fixed;
+            color: #070707;
         }
         .form-container {
-            background-color: #3b3737;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(227, 221, 221, 0.5);
-            width: 100%;
+            background: #ffffff;
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
             max-width: 400px;
-            color: #fff;
-            transition: transform 0.3s ease;
+            width: 100%;
+            color: #333;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .form-container:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
         }
         .form-container h2 {
             text-align: center;
@@ -46,10 +51,10 @@
         .form-group label {
             display: block;
             font-weight: 600;
-            color: #e9e4e4;
+            color: #000000;
             font-size: 16px;
-        
             margin: 7px;
+            
         }
         .form-group input {
             width: 100%;
@@ -57,32 +62,30 @@
             text-indent: 10px;
             border: 2px solid #444;
             border-radius: 4px;
-            background-color: #0a0a0a;
             color: #fff;
             transition: all 0.3s ease;
             box-shadow: 0 4px 8px rgba(251, 251, 251, 0.535); /* 3D Effect */
             font-weight: 400;
         }
         .form-group input:hover {
-            background-color: #0a0a0a;
-            box-shadow: 0 6px 12px rgb(161, 249, 177);
+            box-shadow: 0 6px 12px rgb(161, 174, 249);
         }
         .form-group input:focus {
             outline: none;
-            box-shadow: 0 6px 12px rgb(161, 249, 177);
+            box-shadow: 0 6px 12px rgb(161, 189, 249);
             transform: translateY(-2px);
         }
         .form-group input[type="button"] {
-            background-color: #37f680d6;
-            color: white;
+            background: #70b7f8;
             border: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 12px;
+            border-radius: 50px;
             cursor: pointer;
-            font-size: larger;
-            font-weight: 600;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 4px 10px rgb(210, 222, 208);
-            margin-top: 18px;
-            margin-bottom: 25px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
         }
         
         .container{
@@ -98,23 +101,23 @@
         }
         
         #vcode label {
-    margin-right: 0;
-}
+            margin-right: 0;
+        }
 
-#vcode input[type="text"] {
-    margin: 0;
-    margin-right: 10px;
-}
+        #vcode input[type="text"] {
+            margin: 0;
+            margin-right: 10px;
+        }
 
-#vcode input[type="button"] {
-    margin: 0;
-    padding: 12px 10px;
-    font-size: 14px;
-    
-}
-#vcode{
-    display: none;
-}
+        #vcode input[type="button"] {
+            margin: 0;
+            padding: 12px 10px;
+            font-size: 14px;
+            
+        }
+        #vcode{
+            display: none;
+        }
 
 
     </style>
@@ -154,7 +157,7 @@
  
             </form>
 
-            <p id="message"></p>
+            <p id="message"  class="text-danger"></p>
         </div>
     </div>
 
