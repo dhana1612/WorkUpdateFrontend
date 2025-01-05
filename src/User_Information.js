@@ -18,7 +18,7 @@
     // Retrieve User Information through Email ID
     function User_Information() {
         const send_Email = Email;
-        fetch("https://localhost:7035/api/UserLogins/User_Information", {
+        fetch("https://workupdate.onrender.com/api/UserLogins/User_Information", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -94,7 +94,7 @@
             Profile_Image: base64Image,
         };
 
-        fetch("https://localhost:7035/api/UserLogins/profile_photo", {
+        fetch("https://workupdate.onrender.com/api/UserLogins/profile_photo", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

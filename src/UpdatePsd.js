@@ -14,7 +14,7 @@ function Login() {
         };
          console.log(Email);
          console.log(data);
-        fetch("https://localhost:7035/api/UserLogins/UpdatePsd", {
+        fetch("https://workupdate.onrender.com/api/UserLogins/UpdatePsd", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

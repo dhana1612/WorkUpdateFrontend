@@ -8,7 +8,7 @@ function ForgetPsd() {
     };
 
     console.log(data);
-    fetch("https://localhost:7035/api/UserLogins/EmailCheck", {
+    fetch("https://workupdate.onrender.com/api/UserLogins/EmailCheck", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
