@@ -301,16 +301,6 @@ function AdminValidateResponse(id) {
 
 
 
-
-
-
-
-
-
-
-
-
-
 //Chat Community
 const chatButton = document.getElementById('chatButton');
 const chatModal = document.getElementById('chatModal');
@@ -339,6 +329,7 @@ chatButton.addEventListener('click', () => {
 // Close My Chat Modal
 closeModal.addEventListener('click', () => {
     chatModal.style.display = 'none';
+    chatGroups.innerHTML = "";
 });
 
 
