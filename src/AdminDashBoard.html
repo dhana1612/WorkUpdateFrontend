@@ -245,10 +245,8 @@
             color: #000;
             padding: 20px;
             border-radius: 10px;
-            width: 60%;
             max-width: 500px;
-            height: 55%;
-            max-height: 800px;
+            min-height: 500px;
             display: flex;
             flex-direction: column;
         }
@@ -292,6 +290,11 @@
    /* Important Important chat space between name and checkbox*/
         #employeeList label {
             margin-left: 8px;
+        }
+
+
+        .gp{
+            min-height: 500px;
         }
 
         
@@ -397,10 +400,10 @@
 
 
     <!--Chat Model-->
-            <button id="chatButton" class="chat-icon">💬</button>
+       <button id="chatButton" class="chat-icon">💬</button>
 
-            <!-- Chat Modal -->
-            <div id="chatModal" class="modal">
+    <!-- Chat Modal -->
+        <div id="chatModal" class="modal">
                 <div class="chat-modal-content">
                     <div class="chat-header">
                         <h2>Circles</h2>
@@ -417,11 +420,11 @@
                         
                     </div>
                 </div>
-            </div>
+        </div>
 
 
-            <!-- Group Modal -->
-            <div id="groupFrame" class="modal">
+    <!-- Group Modal -->
+        <div id="groupFrame" class="modal">
                 <div class="modal-content">
 
                     <div style="display: flex; justify-content: space-between; align-items: center;" class="chat-header">
@@ -452,14 +455,20 @@
                             <button id="createGroup" style="padding: 10px; background: #007bff; color: white; border: none; cursor: pointer;" onclick="createGroup()">Create Group</button>
                     </div>
                 </div>
-            </div>
+        </div>
 
             <!-- New Group Modal -->
             <div id="newGroupModal" class="modal">
                 <div class="modal-content" id="modal-content1">
                     <div class="modal-header" id="modal-header1">
                         <h2 id="GroupName"></h2>
-                        <span id="closeGroupModal" class="close">&times;</span>
+
+                        <div>
+                            <span id="groupFrame1" class=""><i class="fas fa-users"></i></span>
+                            <span id="closeGroupModal" class="close">&times;</span>
+                        </div>
+                        
+
                     </div>
 
                     <div class="modal-body" id="modal-body1">
@@ -476,6 +485,77 @@
                     </div>
                 </div>
             </div>
+
+           <!-- Add New Members in Existing Group -->
+           <div id="GroupDashboard" class="modal">
+                <div class="modal-content gp">
+                    <div style="display: flex; justify-content: space-between; align-items: center;" class="chat-header">
+                        <h6 id="GroupDashboardName"></h6>
+                        <span id="closeGroupDashBoard" class="close">&times;</span>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="display" style="display: flex; flex-direction: row; gap: 25px;">
+                            <div>
+                                <h6 id="AddNewMembers" style="cursor: pointer;">
+                                    Add New Members
+                                    <i class="fa fa-edit ms-2"></i>
+                                </h6>
+                            </div>
+                        
+                            <div>
+                                <h6 id="RemoveMembers" style="cursor: pointer;">
+                                    Remove Members
+                                    <i class="fa fa-edit ms-2"></i>
+                                </h6>
+                            </div>
+                        </div>
+                        
+                        
+                    
+
+                        <div id="Members" style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px; ">
+
+                            <!-- Label for employeeList1 -->
+                            <label for="employeeList1" style="white-space: nowrap;">Select Members to Add :</label>
+                            
+                            <!-- Employee list container -->
+                            <div id="employeeList1" style="margin-bottom: 20px; flex-grow: 1; border: 1px solid #ccc; padding: 5px; min-width: 70px;"></div>
+                        
+                            <!-- Selected names -->
+                            <div id="selectedNames1" style="white-space: nowrap;">Selected: None</div>
+                        
+                            <!-- Add New Member button -->
+                            <button id="createGroup" style="padding: 10px; background: #007bff; color: white; border: none; cursor: pointer;" onclick="AddNewMember()">Add New Member</button>
+                        
+                        </div>
+
+
+                        <div id="Members1" style="margin-top: 20px; display: flex; flex-direction: column; gap: 20px; ">
+
+                            <!-- Label for employeeList1 -->
+                            <label for="employeeList2" style="white-space: nowrap;">Select Members to Remove:</label>
+                            
+                            <!-- Employee list container -->
+                            <div id="employeeList2" style="margin-bottom: 20px; flex-grow: 1; border: 1px solid #ccc; padding: 5px; min-width: 70px;"></div>
+                        
+                            <!-- Selected names -->
+                            <div id="selectedNames2" style="white-space: nowrap;">Selected: None</div>
+                        
+                            <!-- Add New Member button -->
+                            <button id="createGroup2" style="padding: 10px; background: #007bff; color: white; border: none; cursor: pointer;" onclick="RemoveMember()">Remove Member</button>
+                        
+                        </div>
+                        
+
+                    </div>
+
+                        
+                    </div>
+                </div>
+            </div>
+
+
     <!--Chat Model-->
 
 
