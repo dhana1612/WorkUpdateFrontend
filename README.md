@@ -23,7 +23,7 @@ This project is a web-based application designed to streamline daily work status
 
 The Admin Dashboard is designed to manage users, groups, and validate work status updates.
 
-<h3>Key Features:</h3>
+<h4>Key Features:</h4>
 
 <h4>1. User Management</h4>
 
