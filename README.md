@@ -2,7 +2,7 @@
 
 <h3>Overview</h3>
 
-This project is a web-based application designed to streamline daily work status updates and facilitate group communication. It features two distinct dashboards: User Dashboard and Admin Dashboard, each tailored to meet the specific needs of users and administrators.
+    This project is a web-based application designed to streamline daily work status updates and facilitate group communication. It features two distinct dashboards: User Dashboard and Admin Dashboard, each tailored to meet the specific needs of users and administrators.
 
 <hr>
 
@@ -98,7 +98,7 @@ Users can view feedback and status updates from the admin.
 
 <h3>Frontend:</h3>
 
-<h3>HTML5, CSS3, JavaScript, Bootstrap 5 </h3>
+<h5>HTML5, CSS3, JavaScript, Bootstrap 5 </h5>
 
 
 
