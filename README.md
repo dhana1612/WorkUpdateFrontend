@@ -102,6 +102,85 @@ The User Dashboard is designed to allow users to manage their daily updates and 
 
 <hr>
 
+<h4>Screenshots:</h4>
+<h5>Login Portal</h5>
+
+![image](https://github.com/user-attachments/assets/1c93d8b3-40a2-4abb-a3a4-27403da4f2d1)
+
+<h5>User Dashboard</h5>
+ 
+![image](https://github.com/user-attachments/assets/03ac0ff0-92ef-4ad9-a454-78ad3afe6511)
+
+<h5>1. Work Status Update Model</h5>
+
+![image](https://github.com/user-attachments/assets/44654b47-8b25-4969-8c12-f5fdd83f2cf6)
+
+<h5>2. Work Status Edit Model</h5>
+
+![image](https://github.com/user-attachments/assets/f2d6ff2d-efd0-425d-b11c-ca18a7e17fa8)
+
+<h5>User Details Dashboard</h5>
+
+![image](https://github.com/user-attachments/assets/3f1555fa-b257-4334-91ab-a3577d65da87)
+
+<h5>Group Community</h5>
+
+![image](https://github.com/user-attachments/assets/f4d59480-fd4c-4a89-85f2-ec5cda973cf4)
+
+<h5>Chat Page</h5>
+
+![image](https://github.com/user-attachments/assets/83f91496-3707-42b4-8ba1-1d6484f38802)
+
+<h5>Admin Dashboard</h5>
+
+![image](https://github.com/user-attachments/assets/dcbb3211-7d40-49d2-9d6b-8d5c64972446)
+
+<h5>User Work Update Details</h5>
+
+![image](https://github.com/user-attachments/assets/a46e37c3-2057-4afd-ac59-f70dc95474f7)
+
+<h5>User WorkStatus validate</h5>
+
+![image](https://github.com/user-attachments/assets/0969edee-8e99-4730-b264-6505de26e0c9)
+
+<h5>Create New Group Community</h5>
+
+![image](https://github.com/user-attachments/assets/c5adef6a-e6c1-40e4-8e6b-cec9f8af652b)
+
+<h5>Chat Page</h5>
+
+![image](https://github.com/user-attachments/assets/ed960367-424e-4b93-a7df-2240bf7efbce)
+
+<h5>Group Dashboard</h5>
+
+![image](https://github.com/user-attachments/assets/7e2dd515-f602-4139-9c1a-1d52ea69ed07)
+
+<h5>Add New Member</h5>
+
+![image](https://github.com/user-attachments/assets/2f7e5d12-fe41-44d3-ae7a-4a5ecaee346b)
+
+<h5>Remove existing Member</h5>
+
+![image](https://github.com/user-attachments/assets/f9d4d195-7756-4f45-9a89-8d12f0149f3f)
+
+<h5>Create New User</h5>
+
+![image](https://github.com/user-attachments/assets/6bc8ff20-5a7e-4561-9bd6-60527730db8f)
+
+<h5>Forget Password</h5>
+
+![image](https://github.com/user-attachments/assets/e20f3ddb-63ff-4841-b51c-07b9b5eef7a9)
+
+<h5>Email Verfication</h5>
+
+![image](https://github.com/user-attachments/assets/244ade04-965d-4784-8ed6-8d1c3393847f)
+
+<h5>Update New Password</h5>
+
+![image](https://github.com/user-attachments/assets/b9578e71-9a8e-4f3a-b4c0-1d79195f56e0)
+
+<hr>
+
 <h3>How to Run the Project</h3>
 
 <ul>
