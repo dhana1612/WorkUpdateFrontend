@@ -61,23 +61,26 @@ The User Dashboard is designed to allow users to manage their daily updates and 
 
 <h4>1. Daily Work Update Module</h4>
 <ul>
-  <ol>Users can submit their daily work status.</ol>
-   <ol>Updates are immediately reflected on the Admin Dashboard for review.</ol>
+  <li>Users can submit their daily work status.</li>
+   <li>Updates are immediately reflected on the Admin Dashboard for review.</li>
 </ul>
 
 <h4>2. User Profile</h4>
-
-Users can view and update their profile information.
+<ul>
+  <li>Users can view and update their profile information.</li>
+</ul>
 
 <h4>3. Group Chat Community</h4>
-
-Users can engage in dynamic group chats using SignalR technology.
-
-Facilitates real-time communication within groups.
+<ul>
+  <li>Users can engage in dynamic group chats using SignalR technology.</li>
+  <li>Facilitates real-time communication within groups.</li>
+</ul>
 
 <h4>4. Work Status Feedback</h4>
 
-Users can view feedback and status updates from the admin.
+<ul>
+  <li>Users can view feedback and status updates from the admin.</li>
+</ul>
 
 <hr>
 
