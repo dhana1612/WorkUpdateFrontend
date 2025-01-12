@@ -19,7 +19,7 @@ This project is a web-based application designed to streamline daily work status
 
 <hr>
 
-<h4>2. Admin Dashboard</h4>
+<h3>2. Admin Dashboard</h3>
 
 The Admin Dashboard is designed to manage users, groups, and validate work status updates.
 
