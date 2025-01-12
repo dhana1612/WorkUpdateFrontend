@@ -2,7 +2,7 @@
 
 <h3>Overview</h3>
 
-    This project is a web-based application designed to streamline daily work status updates and facilitate group communication. It features two distinct dashboards: User Dashboard and Admin Dashboard, each tailored to meet the specific needs of users and administrators.
+This project is a web-based application designed to streamline daily work status updates and facilitate group communication. It features two distinct dashboards: User Dashboard and Admin Dashboard, each tailored to meet the specific needs of users and administrators.
 
 <hr>
 
@@ -19,13 +19,13 @@
 
 <hr>
 
-<h3>2. Admin Dashboard</h3>
+<h4>2. Admin Dashboard</h4>
 
 The Admin Dashboard is designed to manage users, groups, and validate work status updates.
 
 <h3>Key Features:</h3>
 
-<h5>1. User Management</h5>
+<h4>1. User Management</h4>
 
 Admin can create new users.
 
@@ -33,13 +33,13 @@ Automatically sends login credentials to the user's email upon creation.
 
 Users can log in using the credentials provided.
 
-<h3>2. Group Community Management</h3>
+<h4>2. Group Community Management</h4>
 
 Admin can create group communities.
 
 Admin can add newly created users to selected groups.
 
-<h3>3. Work Status Validation</h3>
+<h4>3. Work Status Validation</h4>
 
 Admin validates the user’s daily work status using the following categories:
 
@@ -62,23 +62,23 @@ The User Dashboard is designed to allow users to manage their daily updates and 
 
 <h3>Key Features:</h3>
 
-1. Daily Work Update Module
+<h4>1. Daily Work Update Module</h4>
 
 Users can submit their daily work status.
 
 Updates are immediately reflected on the Admin Dashboard for review.
 
-2. User Profile
+<h4>2. User Profile</h4>
 
 Users can view and update their profile information.
 
-3. Group Chat Community
+<h4>3. Group Chat Community</h4>
 
 Users can engage in dynamic group chats using SignalR technology.
 
 Facilitates real-time communication within groups.
 
-4. Work Status Feedback
+<h4>4. Work Status Feedback</h4>
 
 Users can view feedback and status updates from the admin.
 
