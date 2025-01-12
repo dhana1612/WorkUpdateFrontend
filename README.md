@@ -27,32 +27,29 @@ The Admin Dashboard is designed to manage users, groups, and validate work statu
 
 <h4>1. User Management</h4>
 
-Admin can create new users.
-
-Automatically sends login credentials to the user's email upon creation.
-
-Users can log in using the credentials provided.
-
-<h4>2. Group Community Management</h4>
-
-Admin can create group communities.
-
-Admin can add newly created users to selected groups.
-
-<h4>3. Work Status Validation</h4>
-
-Admin validates the user’s daily work status using the following categories:
-
 <ul>
-  <li>Success</li>
-   <li>Pending (default)</li>
-   <li>Failed</li>
+  <li>Admin can create new users.</li>
+  <li>Automatically sends login credentials to the user's email upon creation.</li>
+  <li>Users can log in using the credentials provided.</li>
 </ul>
 
+<h4>2. Group Community Management</h4>
+<ul>
+  <li>Admin can create group communities.</li>
+  <li>Admin can add newly created users to selected groups.</li>
+</ul>
 
-If the status is marked as Failed, the admin can provide feedback explaining the reason.
-
-Once validated, the status and feedback are visible to the respective user.
+<h4>3. Work Status Validation</h4>
+<ul>
+  <li>Admin validates the user’s daily work status using the following categories:</li>
+  <ul>
+    <li>Success</li>
+     <li>Pending (default)</li>
+     <li>Failed</li>
+  </ul>
+  <li>If the status is marked as Failed, the admin can provide feedback explaining the reason.</li>
+  <li>Once validated, the status and feedback are visible to the respective user.</li>
+</ul>
 
 <hr>
 
