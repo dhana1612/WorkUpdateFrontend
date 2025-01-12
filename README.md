@@ -60,10 +60,10 @@ The User Dashboard is designed to allow users to manage their daily updates and 
 <h3>Key Features:</h3>
 
 <h4>1. Daily Work Update Module</h4>
-
-Users can submit their daily work status.
-
-Updates are immediately reflected on the Admin Dashboard for review.
+<ul>
+  <ol>Users can submit their daily work status.</ol>
+   <ol>Updates are immediately reflected on the Admin Dashboard for review.</ol>
+</ul>
 
 <h4>2. User Profile</h4>
 
