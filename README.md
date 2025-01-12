@@ -100,5 +100,15 @@ The User Dashboard is designed to allow users to manage their daily updates and 
 
 <h5><b>HTML5, CSS3, JavaScript, Bootstrap 5</b></h5>
 
+<hr>
 
+<h3>How to Run the Project</h3>
+
+<ul>
+  <li>Clone the repository from GitHub.</li>
+  <li>Set up the backend by running the ASP.NET Core Web API project.</li>
+  <li>Configure the database connection.</li>
+  <li>Launch the frontend using any compatible web server.</li>
+  <li>Access the application via a web browser.</li>
+</ul>
 
