@@ -113,7 +113,7 @@ The User Dashboard is designed to allow users to manage their daily updates and 
 </ul>
 
 <h4>Screenshots:</h4>
-![image](https://github.com/user-attachments/assets/8639ac11-0da5-42d9-901a-45f6c7e9b0af)
+
 
 
 
