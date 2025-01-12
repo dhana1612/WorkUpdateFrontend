@@ -25,7 +25,7 @@ The Admin Dashboard is designed to manage users, groups, and validate work statu
 
 <h3>Key Features:</h3>
 
-<h3>1. User Management</h3>
+<h5>1. User Management</h5>
 
 Admin can create new users.
 
