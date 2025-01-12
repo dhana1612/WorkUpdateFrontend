@@ -43,11 +43,11 @@ The Admin Dashboard is designed to manage users, groups, and validate work statu
 <ul>
   <li>Admin validates the user’s daily work status using the following categories:</li>
   <ul>
-    <li>Success</li>
-     <li>Pending (default)</li>
-     <li>Failed</li>
+    <li><b>Success<b></li>
+     <li><b>Pending<b> (default)</li>
+     <li><b>Failed<b></li>
   </ul>
-  <li>If the status is marked as Failed, the admin can provide feedback explaining the reason.</li>
+  <li>If the status is marked as <b>Failed</b>, the admin can provide feedback explaining the reason.</li>
   <li>Once validated, the status and feedback are visible to the respective user.</li>
 </ul>
 
@@ -89,16 +89,16 @@ The User Dashboard is designed to allow users to manage their daily updates and 
 <h3>Backend:</h3>
 
 <ul>
-  <li>ASP.NET Core Web API</li>
-  <li>C#</li>
-  <li>SignalR for dynamic, real-time chat functionality</li>
-  <li>LINQ for database queries</li>
+  <li><b>ASP.NET Core Web API<b></li>
+  <li><b>C#<b></li>
+  <li><b>SignalR</b> for dynamic, real-time chat functionality</li>
+  <li><b>LINQ</b> for database queries</li>
 </ul>
 
 
 <h3>Frontend:</h3>
 
-<h5>HTML5, CSS3, JavaScript, Bootstrap 5 </h5>
+<h5><b>HTML5, CSS3, JavaScript, Bootstrap 5</b></h5>
 
 
 
