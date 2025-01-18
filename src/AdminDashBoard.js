@@ -189,7 +189,8 @@ function myFunction() {
                 {
                     document.body.appendChild(feedbackBox);  
                     showFeedbackBox();  
-                } else if(statusDropdown.value === "Success"){
+                } 
+                else if(statusDropdown.value === "Success"){
                     document.body.appendChild(feedbackBox);
                     showFeedbackBox();
                     updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
