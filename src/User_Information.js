@@ -2,7 +2,7 @@
     var Email;
 
     function goBack() {
-      0
+        window.history.back();
     }
 
     window.onload = function () {
