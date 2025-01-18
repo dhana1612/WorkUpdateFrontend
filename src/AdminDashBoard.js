@@ -172,7 +172,7 @@ function myFunction() {
             //feedback textarea selected 
             okButton.addEventListener("click", () => {
                 const feedback = feedbackInput.value; 
-                feedbackmessage = "Rejected : "  + feedback;
+                feedbackmessage = feedback;
                 updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
                 hideFeedbackBox(); 
             });
@@ -197,13 +197,7 @@ function myFunction() {
                 else {
                     hideFeedbackBox();  
                 }
-
-                // if(statusDropdown.value === "Success"){
-                //     feedbackmessage = "Approved";
-                //     updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
-                //     statusDropdown.classList("btn-success");
-                // }
-                // else 
+ 
                 if(statusDropdown.value === "Pending"){
                     feedbackmessage = "Request is Pending";
                     updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
@@ -523,15 +517,16 @@ function myFunction() {
                 {
                     document.body.appendChild(feedbackBox);  
                     showFeedbackBox();  
-                } else {
+                }else if(statusDropdown.value === "Success"){
+                    document.body.appendChild(feedbackBox);  
+                    showFeedbackBox(); 
+                    updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
+                }
+                 else {
                     hideFeedbackBox();  
                 }
 
-                if(statusDropdown.value === "Success"){
-                    feedbackmessage = "Approved";
-                    updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
-                }
-                else if(statusDropdown.value === "Pending"){
+                if(statusDropdown.value === "Pending"){
                     console.log(responsemessage);
                     console.log(feedbackmessage);
                     feedbackmessage = "Request is Pending";
