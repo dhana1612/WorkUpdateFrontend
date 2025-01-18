@@ -6,6 +6,7 @@ function Register(event) {
     const confirmPassword = document.getElementById('confirmPassword').value;
     const gender = document.getElementById("mySelect").value;
     const Date = document.getElementById("Date").value;
+    const Joining_Date = document.getElementById("Joining_Date").value;
    
     // Data to be sent to the backend
     const data = {
@@ -15,7 +16,8 @@ function Register(event) {
         password: password,
         confirmPassword:confirmPassword,
         gender:gender,
-        date:Date
+        date:Date,
+        Joining_Date:Joining_Date
     };
 
     console.log(data)
