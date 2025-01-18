@@ -36,6 +36,7 @@
         .then((data) => {
             const base64Image = data.profile_Image; // Assuming API returns 'Profile_Image'
             const imageElement = document.getElementById('profileIcon');
+            console.log(data)
 
             if (!base64Image || base64Image.trim() === "") {
                 if (data.gender === "Male") {
@@ -54,6 +55,7 @@
             document.getElementById("Password").innerHTML = data.password;
             document.getElementById("Gender").innerHTML = data.gender;
             document.getElementById("Date").innerHTML = data.date;
+            document.getElementById("Position").innerHTML = data.date;
         })
         .catch((error) => {
             alert("Error fetching user information: " + error.message);
