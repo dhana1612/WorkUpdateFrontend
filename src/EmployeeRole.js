@@ -40,7 +40,8 @@ async function populateTable(data) {
     for (let item of data) {
         const UserName = item.userName;
         const Role = item.role; 
-        const JoiningDate = item.joiningDate;
+        const JoiningDate = item.joining_Date;
+        console.log(item.joining_Date)
         const Experience = item.experience;
 
         // Serial Number
