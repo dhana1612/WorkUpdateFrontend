@@ -55,7 +55,7 @@
             document.getElementById("Password").innerHTML = data.password;
             document.getElementById("Gender").innerHTML = data.gender;
             document.getElementById("Date").innerHTML = data.date;
-            document.getElementById("Position").innerHTML = data.date;
+            document.getElementById("Position").innerHTML = data.role;
         })
         .catch((error) => {
             alert("Error fetching user information: " + error.message);
