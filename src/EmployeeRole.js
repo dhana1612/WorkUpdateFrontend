@@ -104,8 +104,7 @@ async function populateTable(data) {
             statusDropdown.addEventListener("change", async (event) => {
                 const selectedOption = event.target.selectedOptions[0];
                 const updatedRole = selectedOption.textContent;
-                Role = updatedRole;
-
+              
                 // Update the cell text with the new role and remove the dropdown
                 role.textContent = updatedRole;
                 role.appendChild(editIcon);
