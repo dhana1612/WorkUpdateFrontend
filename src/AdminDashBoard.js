@@ -189,16 +189,22 @@ function myFunction() {
                 {
                     document.body.appendChild(feedbackBox);  
                     showFeedbackBox();  
-                } else {
+                } else if(statusDropdown.value === "Success"){
+                    document.body.appendChild(feedbackBox);
+                    showFeedbackBox();
+                    updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
+                }
+                else {
                     hideFeedbackBox();  
                 }
 
-                if(statusDropdown.value === "Success"){
-                    feedbackmessage = "Approved";
-                    updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
-                    statusDropdown.classList("btn-success");
-                }
-                else if(statusDropdown.value === "Pending"){
+                // if(statusDropdown.value === "Success"){
+                //     feedbackmessage = "Approved";
+                //     updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
+                //     statusDropdown.classList("btn-success");
+                // }
+                // else 
+                if(statusDropdown.value === "Pending"){
                     feedbackmessage = "Request is Pending";
                     updateResponseMessage(responsemessage,feedbackmessage, unqiuevalue,emailres,workstatusres,taskLinksres,dateres);
                     statusDropdown.classList("btn-warning");
