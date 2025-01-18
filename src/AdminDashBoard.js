@@ -23,10 +23,7 @@ function myFunction() {
 //When I click the Workupdate button it will display the Table
     document.getElementById('toggleTableButton').onclick = function() {
         var table = document.getElementById('dataTable');
-        var table1 = document.getElementById('dataTable1');
-       
         if (table.style.display === 'none') {
-            table1.style.display === 'none'
             table.style.display = 'block'; 
         } else {
             table.style.display = 'none'; // Hide the table
