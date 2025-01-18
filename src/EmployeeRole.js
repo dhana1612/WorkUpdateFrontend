@@ -57,20 +57,68 @@ async function populateTable(data) {
         name.textContent = UserName;
         row.appendChild(name);
 
-        //Create Role Column
+
+       // Create Role Column
         const role = document.createElement("td");
-        role.textContent = Role; 
-        
+        role.textContent = Role;
+
         // Create Edit Icon
         const editIcon = document.createElement("i");
-        editIcon.className = "fas fa-edit"; 
-        editIcon.style.cursor = "pointer"; 
-        editIcon.style.marginLeft = "10px"; 
+        editIcon.className = "fas fa-edit";
+        editIcon.style.cursor = "pointer";
+        editIcon.style.marginLeft = "10px";
+
         editIcon.addEventListener("click", () => {
-            window.location.href = "#"; 
+            // Clear existing role text or dropdown
+            role.textContent = "";
+
+            // Create Dropdown
+            const statusDropdown = document.createElement("select");
+            statusDropdown.classList.add("form-select", "form-select-sm");
+            statusDropdown.style.border = "none";
+
+            // Define the options for the dropdown
+            const options = [
+                { value: "Junior_Software_Developer", text: "Junior Software Developer" },
+                { value: "Senior_Software_Developer", text: "Senior Software Developer" },
+                { value: "Mern_Stack_Developer", text: "Mern Stack Developer" },
+                { value: "Data_Analyst", text: "Data Analyst" },
+                { value: "Intern", text: "Intern" },
+                { value: "Software_Developer", text: "Software Developer" },
+            ];
+
+            // Populate the dropdown with options
+            options.forEach(optionData => {
+                const option = document.createElement("option");
+                option.value = optionData.value;
+                option.textContent = optionData.text;
+
+                // Set default value based on Role
+                if (optionData.text === Role) {
+                    option.selected = true;
+                }
+                statusDropdown.appendChild(option);
+            });
+
+            // Handle Dropdown Value Change
+            statusDropdown.addEventListener("change", async (event) => {
+                const selectedOption = event.target.selectedOptions[0];
+                const updatedRole = selectedOption.textContent;
+                Role = updatedRole;
+
+                // Update the cell text with the new role and remove the dropdown
+                role.textContent = updatedRole;
+                role.appendChild(editIcon);
+            });
+
+            // Append the dropdown to the role cell
+            role.appendChild(statusDropdown);
         });
+
+        // Append the edit icon initially
         role.appendChild(editIcon);
         row.appendChild(role);
+
       
         
 
@@ -89,7 +137,6 @@ async function populateTable(data) {
         tableBody.appendChild(row);
     }
 }
-
 
 
 function calculateExperience(startDate) {
