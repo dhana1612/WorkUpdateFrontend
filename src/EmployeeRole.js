@@ -166,7 +166,7 @@ function updateRole_Database(updatedRole,UserName){
     };
 
     console.log(data);
-    fetch("https://workupdate.onrender.com/api/UserLogins/EmailCheck", {
+    fetch("https://workupdate.onrender.com/api/UserLogins/updateRole_Database", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
