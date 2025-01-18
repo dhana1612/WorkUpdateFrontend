@@ -184,7 +184,7 @@ function updateRole_Database(updatedRole,UserName){
         return response.text();
     })
     .then(message => {       
-        alert(message)
+       
     })
     
     .catch(error => {
@@ -193,3 +193,6 @@ function updateRole_Database(updatedRole,UserName){
 }
 
 
+function goBack() {
+    window.history.back();
+}
