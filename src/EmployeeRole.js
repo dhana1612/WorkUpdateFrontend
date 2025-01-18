@@ -57,10 +57,23 @@ async function populateTable(data) {
         name.textContent = UserName;
         row.appendChild(name);
 
-        // Create Role column
+        //Create Role Column
         const role = document.createElement("td");
-        role.textContent = Role;
+        role.textContent = Role; 
+        
+        // Create Edit Icon
+        const editIcon = document.createElement("i");
+        editIcon.className = "fas fa-edit"; 
+        editIcon.style.cursor = "pointer"; 
+        editIcon.style.marginLeft = "10px"; 
+        editIcon.addEventListener("click", () => {
+            window.location.href = "#"; 
+        });
+        role.appendChild(editIcon);
         row.appendChild(role);
+      
+        
+
 
         //Create Joining Date
         const joiningDate = document.createElement("td");
