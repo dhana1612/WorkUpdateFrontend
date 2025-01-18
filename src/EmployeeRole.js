@@ -107,6 +107,7 @@ async function populateTable(data) {
               
                 // Update the cell text with the new role and remove the dropdown
                 role.textContent = updatedRole;
+                updateRole_Database(updatedRole,UserName)
                 role.appendChild(editIcon);
             });
 
@@ -119,9 +120,6 @@ async function populateTable(data) {
         row.appendChild(role);
 
       
-        
-
-
         //Create Joining Date
         const joiningDate = document.createElement("td");
         joiningDate.textContent = JoiningDate;
@@ -158,6 +156,40 @@ function calculateExperience(startDate) {
     }
 
     return { years, months, days };
+}
+
+
+function updateRole_Database(updatedRole,UserName){
+    const data = {
+        Role: updatedRole,
+        UserName:UserName
+    };
+
+    console.log(data);
+    fetch("https://workupdate.onrender.com/api/UserLogins/EmailCheck", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+
+    
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(errorMessage => {
+                throw new Error(errorMessage || "Network response was not ok");
+            });
+        }
+        return response.text();
+    })
+    .then(message => {       
+        alert(message)
+    })
+    
+    .catch(error => {
+        alert(error)
+    });
 }
 
 
