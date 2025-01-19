@@ -121,7 +121,8 @@ The User Dashboard is designed to allow users to manage their daily updates and 
 
 <h5>User Details Dashboard</h5>
 
-![image](https://github.com/user-attachments/assets/3f1555fa-b257-4334-91ab-a3577d65da87)
+![image](https://github.com/user-attachments/assets/6ead3524-ff65-4412-8948-a6d725ab6faa)
+
 
 <h5>Group Community</h5>
 
@@ -133,7 +134,11 @@ The User Dashboard is designed to allow users to manage their daily updates and 
 
 <h5>Admin Dashboard</h5>
 
-![image](https://github.com/user-attachments/assets/dcbb3211-7d40-49d2-9d6b-8d5c64972446)
+![image](https://github.com/user-attachments/assets/43e25df7-4e6b-4c06-826b-9003a9ef871d)
+
+<h5>Employees Role</h5>
+
+![image](https://github.com/user-attachments/assets/00ea9ed4-6659-4064-85ce-f6862679ceb8)
 
 <h5>User Work Update Details</h5>
 
